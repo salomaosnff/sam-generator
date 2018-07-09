@@ -1,0 +1,69 @@
+<html>
+
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<v-app>
+			<v-toolbar app color="primary">
+				<v-toolbar-title class="white--text">SAM Meme Generator v1.0</v-toolbar-title>
+			</v-toolbar>
+			<v-content>
+				<v-container fluid>
+					<v-card class="editor">
+						<v-card-media :src="url" height="320px"></v-card-media>
+						<v-card-text>
+							<p class="title">Editor</p>
+							<v-layout row wrap>
+								<v-flex xs12 sm6>
+									<p class="body-2">Algorítimo de criação</p>
+									<v-radio-group v-model="form.alg">
+										<v-radio v-for="a in algoritimos" :key="a" :label="a" :value="a"></v-radio>
+										<v-radio label="Outro" disabled></v-radio>
+									</v-radio-group>
+								</v-flex>
+								<v-flex xs12 sm6>
+									<p class="body-2">Sujeito</p>
+									<v-radio-group v-model="form.sujeito">
+										<v-radio v-for="a in sujeitos" :key="a" :label="a" :value="a"></v-radio>
+									</v-radio-group>
+								</v-flex>
+								<v-flex xs12>
+									<p class="body-2">Imagem</p>
+									<v-container fluid grid-list-sm>
+										<v-layout row wrap>
+											<v-radio-group row v-model="form.img">
+												<v-flex v-for="i in imagens" :key="i.src" xs4>
+													<img :src="i.src" class="image mb-2" width="100%" height="100%">
+													<v-radio :label="i.text" :value="i"></v-radio>
+												</v-flex>
+											</v-radio-group>
+										</v-layout>
+									</v-container>
+								</v-flex>
+							</v-layout>
+							<v-layout row mt-4>
+								<v-flex>
+									<v-text-field label="Ação" v-model="form.acao"></v-text-field>
+								</v-flex>
+							</v-layout>
+						</v-card-text>
+						<v-card-actions>
+							<v-spacer></v-spacer>
+							<v-btn tag="a" :href="url" :download="nomeArquivo" color="primary" @click="save">Salvar</v-btn>
+						</v-card-actions>
+					</v-card>
+
+				</v-container>
+			</v-content>
+			<v-footer></v-footer>
+		</v-app>
+	</div>
+</body>
+</html>
