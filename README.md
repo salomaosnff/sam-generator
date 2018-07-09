@@ -1,0 +1,2 @@
+# sam-generator
+Crie memes pra zam kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
